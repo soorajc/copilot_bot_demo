@@ -8,11 +8,13 @@
 import React, {useState, useEffect} from 'react';
 import {SafeAreaView, View, Text, Dimensions, Animated} from 'react-native';
 import styles from './styles';
+import {TypeAnimation} from 'react-native-type-animation';
 
 interface TextBoxProps {
   content: string;
   type: string;
   size: string;
+  actionHandler: () => void;
 }
 
 interface WidthType {
@@ -29,7 +31,7 @@ const widthSizes = {
 
 function TextBox(props: TextBoxProps) {
   const [fadeAnim] = useState(new Animated.Value(0));
-  const {content, type, size} = props;
+  const {content, type, size, actionHandler} = props;
   const textBoxAlignment = type === 'Query' ? 'flex-start' : 'flex-end';
   const textBoxColor = type === 'Query' ? 'black' : '#EEEEEE';
   const textColor = type === 'Query' ? 'white' : 'black';
@@ -60,7 +62,20 @@ function TextBox(props: TextBoxProps) {
           opacity: fadeAnim,
         },
       ]}>
-      <Text style={[styles.textLabel, {color: textColor}]}>{content}</Text>
+      <TypeAnimation
+        style={styles.textLabel}
+        blinkSpeed={4000}
+        cursor={false}
+        sequence={[
+          {text: content},
+          {
+            action: () => {
+              actionHandler();
+              console.log('Finished first two sequences');
+            },
+          },
+        ]}
+      />
     </Animated.View>
   );
 }

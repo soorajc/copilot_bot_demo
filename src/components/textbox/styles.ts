@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
         shadowRadius: 1,  
     },
     textLabel: {
-        color: 'black',
+        color: 'white',
+        textAlign: 'left'
     },
     alignEnd: {
         alignSelf: 'flex-end'
