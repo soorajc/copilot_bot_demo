@@ -7,23 +7,22 @@
 
 import React, {useMemo, useState, useEffect} from 'react';
 import {View, FlatList, Animated} from 'react-native';
-
 import styles from './styles';
 import PromptTile from '../prompt_tile';
 
 const DATA = [
   {
-    id: '#p1',
+    id: 'pr_intro',
     title: 'Watch Introduction Video',
     animationURI: require('../../assets/video_training.json'),
   },
   {
-    id: '#p2',
+    id: 'pr_team',
     title: 'Know your team',
     animationURI: require('../../assets/office_team.json'),
   },
   {
-    id: '#p3',
+    id: 'pr_training',
     title: 'Check training schedule',
     animationURI: require('../../assets/training_schedule.json'),
   },
@@ -48,7 +47,11 @@ function PromptSelector(): JSX.Element {
         scrollEnabled={false}
         bounces={false}
         renderItem={({item}) => (
-          <PromptTile title={item.title} animationURI={item.animationURI} />
+          <PromptTile
+            title={item.title}
+            animationURI={item.animationURI}
+            promptId={item.id}
+          />
         )}
         keyExtractor={item => item.id}
       />
