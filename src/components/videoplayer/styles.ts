@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     },
     webView: {
         flex: 1,
+        backgroundColor: '#ededed',
     }
     
 });

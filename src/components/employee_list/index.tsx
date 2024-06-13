@@ -31,7 +31,7 @@ const DATA = [
   },
 ];
 
-function HorizontalList(): JSX.Element {
+function EmployeeList(): JSX.Element {
   return (
     <View style={styles.listContainer}>
       <FlatList
@@ -51,4 +51,4 @@ function HorizontalList(): JSX.Element {
   );
 }
 
-export default HorizontalList;
+export default EmployeeList;
