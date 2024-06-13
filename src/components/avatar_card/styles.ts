@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
         overflow: "hidden",
         borderWidth: 2,
         borderColor: "#ededed",
+        backgroundColor: '#ededed'
     },
     employeeName: {
         fontWeight: 'bold',
