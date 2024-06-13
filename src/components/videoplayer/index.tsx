@@ -6,10 +6,11 @@
  */
 
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import {WebView} from 'react-native-webview';
 
 import styles from './styles';
+import {TRAINING_VIDEO_URL} from '../../data';
 
 function VideoPlayer(): JSX.Element {
   return (
@@ -21,7 +22,7 @@ function VideoPlayer(): JSX.Element {
         allowsFullscreenVideo={true}
         domStorageEnabled={true}
         source={{
-          uri: 'https://www.youtube.com/embed/y3gVno6UX4Q?si=SfsTzgw4kdf1dkQO',
+          uri: TRAINING_VIDEO_URL,
         }}
         style={styles.webView}
       />

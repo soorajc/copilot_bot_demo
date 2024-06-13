@@ -32,7 +32,7 @@ function HomeScreen(): JSX.Element {
         ref={scrollViewRef}>
         <Header />
         <TextBox
-          content={`Hey Matt GoodMorning 😀 ! What would you like to do today?`}
+          content={`Hey Matt Nice to meet you  😀 ! Lets get started with the onboarding process`}
           type="Query"
           size="large"
           actionHandler={handlePromptSelector}

@@ -1,12 +1,12 @@
 /**
- * Sample React Native App
+ * TextBox Component
  * https://github.com/facebook/react-native
  *
  * @format
  */
 
 import React, {useState, useEffect} from 'react';
-import {SafeAreaView, View, Text, Dimensions, Animated} from 'react-native';
+import {Dimensions, Animated} from 'react-native';
 import styles from './styles';
 import {TypeAnimation} from 'react-native-type-animation';
 
@@ -21,6 +21,15 @@ interface WidthType {
   [key: string]: number;
 }
 
+interface TextBoxStyle {
+  alignment: 'flex-start' | 'flex-end';
+  backgroundColor: string;
+}
+
+interface TextBoxConfig {
+  [key: string]: TextBoxStyle;
+}
+
 const {height, width} = Dimensions.get('window');
 
 const widthSizes = {
@@ -29,13 +38,22 @@ const widthSizes = {
   large: width * 0.7,
 };
 
+const textBoxConfig: TextBoxConfig = {
+  Query: {
+    alignment: 'flex-start',
+    backgroundColor: '#212121',
+  },
+  Reply: {
+    alignment: 'flex-end',
+    backgroundColor: '#EEEEEE',
+  },
+};
+
 function TextBox(props: TextBoxProps) {
   const [fadeAnim] = useState(new Animated.Value(0));
   const {content, type, size, actionHandler} = props;
-  const textBoxAlignment = type === 'Query' ? 'flex-start' : 'flex-end';
-  const textBoxColor = type === 'Query' ? 'black' : '#EEEEEE';
-  const textColor = type === 'Query' ? 'white' : 'black';
-  const animationType = type === 'Query' ? 'fadeInLeft' : 'fadeInRight';
+  const textBoxAlignment = textBoxConfig[type]['alignment'];
+  const textBoxColor = textBoxConfig[type]['backgroundColor'];
 
   const widthType: WidthType = {
     medium: widthSizes.medium,
@@ -44,11 +62,17 @@ function TextBox(props: TextBoxProps) {
   };
 
   useEffect(() => {
-    Animated.timing(fadeAnim, {
+    const animation = Animated.timing(fadeAnim, {
       toValue: 1,
       duration: 1000,
       useNativeDriver: true,
-    }).start();
+    });
+
+    animation.start();
+
+    return () => {
+      animation.stop();
+    };
   }, []);
 
   return (
@@ -71,7 +95,6 @@ function TextBox(props: TextBoxProps) {
           {
             action: () => {
               actionHandler();
-              console.log('Finished first two sequences');
             },
           },
         ]}

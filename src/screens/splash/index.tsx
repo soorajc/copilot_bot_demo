@@ -8,11 +8,7 @@
 import React, {useEffect} from 'react';
 import {View} from 'react-native';
 import LottieView from 'lottie-react-native';
-import {
-  useNavigation,
-  ParamListBase,
-  NavigationProp,
-} from '@react-navigation/native';
+import {useNavigation, ParamListBase} from '@react-navigation/native';
 
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
@@ -24,9 +20,7 @@ function SplashScreen(): JSX.Element {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigation.replace('Home');
-    }, 3000); // 3 seconds timeout
-
-    // Cleanup the timer if the component is unmounted
+    }, 3000);
     return () => clearTimeout(timer);
   }, [navigation]);
 
