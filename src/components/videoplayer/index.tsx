@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import {View} from 'react-native';
+import {ActivityIndicator, View} from 'react-native';
 import {WebView} from 'react-native-webview';
 
 import styles from './styles';
@@ -21,6 +21,13 @@ function VideoPlayer(): JSX.Element {
         javaScriptEnabled={true}
         allowsFullscreenVideo={true}
         domStorageEnabled={true}
+        cacheEnabled={true}
+        startInLoadingState={true}
+        renderLoading={() => (
+          <View style={styles.loaderContainer}>
+            <ActivityIndicator size="large" color="#212121" />
+          </View>
+        )}
         source={{
           uri: TRAINING_VIDEO_URL,
         }}

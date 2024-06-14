@@ -16,6 +16,11 @@ const styles = StyleSheet.create({
         padding: width * 0.03,
         margin: height * 0.01,
     },
+    loaderContainer: {
+        flex: 1, 
+        alignItems: 'center', 
+        justifyContent: 'center'
+    },
     webView: {
         flex: 1,
         backgroundColor: '#ededed',
