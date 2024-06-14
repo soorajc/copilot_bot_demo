@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         elevation: 5,
-        shadowColor: 'black',
+        shadowColor: '#212121',
         shadowOffset: { width: 1, height: 1 },
         shadowOpacity: 0.5,
         shadowRadius: 1,  
@@ -35,11 +35,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginTop: height * 0.01,
         marginBottom: height * 0.01,
-        color: 'white',
+        color: '#ffffff',
     },
     designation: {
         fontWeight: '400',
-        color: 'white',
+        color: '#ffffff',
     }
 });
 
